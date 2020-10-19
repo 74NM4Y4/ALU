@@ -1,0 +1,22 @@
+module ALU(
+    input [3:0] a,
+    input [3:0] b,
+    input [2:0] select,
+    output reg flag,
+    output reg [7:0] Out
+    );
+    
+    always@(a,b,select)
+    begin
+    case(select)
+    3'b000 : Out = a+b;  //Addition
+    3'b001 : Out = a-b;  //Subtraction
+    3'b010 : Out = a&b;  //AND
+    3'b011 : Out = a|b;  //OR
+    3'b100 : Out = a^b;  //XOR
+    3'b101 : Out = ~a;  //NOT a
+    3'b110 : Out = ~b;  //NOT b
+    endcase
+    flag = Out[4]; //Carry bit
+    end
+endmodule
