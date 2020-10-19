@@ -1,0 +1,24 @@
+module ALU_TB;
+reg [3:0] a,b;
+reg [2:0] select;
+wire flag;
+wire [7:0] Out;
+ALU uut (.a(a),.b(b),.select(select),.flag(flag),.Out(Out));
+initial begin
+a=4'b1000;b=4'b0111;select=3'b000; //Addition
+#100;
+a=4'b1000;b=4'b0111;select=3'b001; //Subtraction
+#100;
+a=4'b1100;b=4'b0111;select=3'b010; //AND
+#100;
+a=4'b1010;b=4'b0011;select=3'b011; //OR
+#100;
+a=4'b1011;b=4'b0111;select=3'b100; //XOR
+#100;
+a=4'b1000;b=4'b0111;select=3'b101; //NOT a
+#100;
+a=4'b1000;b=4'b0111;select=3'b110; //NOT b
+#100;
+
+end
+endmodule
